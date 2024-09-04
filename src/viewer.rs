@@ -406,14 +406,6 @@ impl GltfViewer {
         }
 
         let img = img.flipv();
-        if let Err(err) = img.save(filename) {
-            error!("{}", err);
-        } else {
-            println!(
-                "Saved {}x{} screenshot to {}",
-                self.size.width, self.size.height, filename
-            );
-        }
         img
     }
 
