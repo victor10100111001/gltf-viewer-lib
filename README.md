@@ -1,3 +1,6 @@
+# Version of the crate available as library
+
+
 # gltf-viewer [![status](https://img.shields.io/badge/glTF-2%2E0-green.svg?style=flat)](https://github.com/KhronosGroup/glTF)
 [![crates.io](https://img.shields.io/crates/v/gltf-viewer.svg)](https://crates.io/crates/gltf-viewer)
 [![GitHub release](https://img.shields.io/github/release/bwasty/gltf-viewer.svg)](https://github.com/bwasty/gltf-viewer/releases/latest)
