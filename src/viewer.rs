@@ -386,7 +386,7 @@ impl GltfViewer {
         }
     }
 
-    pub fn screenshot_save(&mut self, filename: &str) -> DynamicImage {
+    pub fn screenshot_save(&mut self) -> DynamicImage {
         self.draw();
 
         let mut img = DynamicImage::new_rgba8(self.size.width as u32, self.size.height as u32);
@@ -409,21 +409,14 @@ impl GltfViewer {
         img
     }
 
-    pub fn multiscreenshot_save(&mut self, filename: &str, count: u32) -> Vec<DynamicImage> {
+    pub fn multiscreenshot_save(&mut self, count: u32) -> Vec<DynamicImage> {
         let min_angle: f32 = 0.0;
         let max_angle: f32 = 2.0 * PI;
         let increment_angle: f32 = ((max_angle - min_angle) / (count as f32)) as f32;
-        let suffix_length = count.to_string().len();
         let mut images: Vec<DynamicImage> = vec![];
-        for i in 1..=count {
+        for _ in 1..=count {
             self.orbit_controls.rotate_object(increment_angle);
-            let dot = filename.rfind('.').unwrap_or_else(|| filename.len());
-            let mut actual_name = filename.to_string();
-            actual_name.insert_str(
-                dot,
-                &format!("_{:0suffix_length$}", i, suffix_length = suffix_length),
-            );
-            let image = self.screenshot_save(&actual_name[..]);
+            let image = self.screenshot_save();
             images.push(image);
         }
         images
